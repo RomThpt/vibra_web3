@@ -6,6 +6,7 @@ import { useSpotify } from "../context/SpotifyContext";
 import { MySession } from "../types/types";
 import CollectionTabs from "./CollectionTabs";
 import SearchInput from "./SearchInput";
+import Link from "next/link";
 
 interface UseSession {
   data: MySession | null;
@@ -46,17 +47,22 @@ export default function Header() {
         {router.pathname.includes("/collection") &&
           router.pathname !== "/collection/tracks" && <CollectionTabs />}
       </div>
-
+      <div>
+        <Link href="/premium">
+          <a className="flex items-center justify-center rounded-full h-10 px-4 hover:bg-primary focus:outline-none font-bold">
+            Subscribe Premium
+          </a>
+        </Link>
+      </div>
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-3 py-2 pl-2 pr-4 bg-black rounded-full bg-opacity-70">
           {session?.user?.picture === undefined ? (
-            <AiOutlineUser className="bg-[#333333] p-1 rounded-full text-2xl" />
+            <AiOutlineUser className="bg-[#333333]" />
           ) : (
             <img
+              className="rounded-full w-12 h-10"
               src={session?.user?.picture}
-              className="object-contain w-8 h-8 rounded-full"
-              alt={session?.user?.name}
-            />
+              alt="User profile picture" />
           )}
           <span className="text-sm font-bold tracking-wide">
             {session?.user?.name}
@@ -72,6 +78,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-    </header>
+    </header >
   );
 }

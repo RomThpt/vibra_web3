@@ -16,7 +16,12 @@ nProgress.configure({
   showSpinner: false,
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+interface CustomPageProps {
+  session?: any;
+  [key: string]: any;
+}
+
+function MyApp({ Component, pageProps }: AppProps<CustomPageProps>) {
   const router = useRouter();
 
   useEffect(() => {
