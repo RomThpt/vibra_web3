@@ -1,4 +1,6 @@
-module.exports = {
+const { withAccountKitUi, createColorSet } = require("@account-kit/react/tailwind");
+
+const config = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
@@ -23,3 +25,10 @@ module.exports = {
         extend: {},
     },
 };
+
+module.exports = withAccountKitUi(config, {
+    colors: {
+        "btn-primary": createColorSet("#E82594", "#FF66CC"),
+        "fg-accent-brand": createColorSet("#E82594", "#FF66CC"),
+    },
+});
