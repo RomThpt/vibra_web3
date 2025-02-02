@@ -2,12 +2,33 @@
 
 import { DownloadIcon, FileAudioIcon, Music2Icon } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Page() {
+    const [showIframe, setShowIframe] = useState(false);
 
+    const handleSubscribe = () => {
+        setShowIframe(true);
+    };
 
     return (
-        <div className="flex flex-col min-h-[100dvh]text-white">
+        <div className="flex flex-col min-h-[100dvh] text-white">
+            {showIframe && (
+                <div className="fixed inset-0 z-50">
+                    <iframe
+                        src="https://vibra.widget.testnet.kiln.fi/overview"
+                        title="Kiln Widget"
+                        allow="clipboard-write"
+                        style={{ width: "100vw", height: "100vh" }}
+                    />
+                    <button 
+                        className="absolute top-4 right-4 bg-white text-black px-4 py-2 rounded-full"
+                        onClick={() => setShowIframe(false)}
+                    >
+                        Close
+                    </button>
+                </div>
+            )}
             <main className="flex-1">
                 <section className="w-full py-14 bg-gradient-to-r from-pink-800/80 to-blue-900/80">
                     <div className="container px-4 md:px-6 text-white">
@@ -123,7 +144,10 @@ export default function Page() {
                                             <span>Only one month</span>
                                         </li>
                                     </ul>
-                                    <button className="w-full py-3 mt-4 font-semibold rounded-full bg-transparent border border-white hover:bg-white hover:text-black transition-colors">
+                                    <button 
+                                        className="w-full py-3 mt-4 font-semibold rounded-full bg-transparent border border-white hover:bg-white hover:text-black transition-colors"
+                                        onClick={handleSubscribe}
+                                    >
                                         Start Month Trial
                                     </button>
                                 </div>
@@ -153,7 +177,10 @@ export default function Page() {
                                             <span>Refund if needed after 1 year using our platform</span>
                                         </li>
                                     </ul>
-                                    <button className="w-full py-3 mt-4 font-semibold text-black bg-white rounded-full hover:bg-opacity-90 transition-opacity">
+                                    <button 
+                                        className="w-full py-3 mt-4 font-semibold text-black bg-white rounded-full hover:bg-opacity-90 transition-opacity"
+                                        onClick={handleSubscribe}
+                                    >
                                         Go Premium
                                     </button>
                                 </div>
@@ -180,7 +207,10 @@ export default function Page() {
                                             <span>Digger mix</span>
                                         </li>
                                     </ul>
-                                    <button className="w-full py-3 mt-4 font-semibold rounded-full bg-transparent border border-white hover:bg-white hover:text-black transition-colors">
+                                    <button 
+                                        className="w-full py-3 mt-4 font-semibold rounded-full bg-transparent border border-white hover:bg-white hover:text-black transition-colors"
+                                        onClick={handleSubscribe}
+                                    >
                                         Digger Plan
                                     </button>
                                 </div>
