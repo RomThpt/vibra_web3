@@ -36,69 +36,67 @@ export default function Sidebar() {
 
         <ul className="w-full mt-4">
           <Link href="/">
-            <a>
-              <li
-                className={`${router.pathname === "/" ? activeLink : inactiveLink
-                  } flex text-sm items-center gap-3 p-2 rounded`}
-              >
-                {router.pathname === "/" ? (
-                  <RiHome5Fill className="text-2xl" />
-                ) : (
-                  <RiHome5Line className="text-2xl" />
-                )}
-                <span className="font-bold">Home</span>
-              </li>
-            </a>
+            <li
+              className={`${router.pathname === "/" ? activeLink : inactiveLink
+                } flex text-sm items-center gap-3 p-2 rounded`}
+            >
+              {router.pathname === "/" ? (
+                <RiHome5Fill className="text-2xl" />
+              ) : (
+                <RiHome5Line className="text-2xl" />
+              )}
+              <span className="font-bold">Home</span>
+            </li>
           </Link>
 
           <Link href="/search">
-            <a>
-              <li
-                className={`${router.pathname === "/search" ? activeLink : inactiveLink
-                  } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
-              >
-                <IoSearchOutline className="text-2xl" />
 
-                <span className="font-bold">Search</span>
-              </li>
-            </a>
+            <li
+              className={`${router.pathname === "/search" ? activeLink : inactiveLink
+                } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
+            >
+              <IoSearchOutline className="text-2xl" />
+
+              <span className="font-bold">Search</span>
+            </li>
+
           </Link>
 
           <Link href="/collection/playlists">
-            <a>
-              <li
-                className={`${router.pathname.includes("/collection") &&
-                    !router.pathname.includes("tracks")
-                    ? activeLink
-                    : inactiveLink
-                  } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
-              >
-                <IoMdList className="text-2xl" />
-                <span className="font-bold">Your Library</span>
-              </li>
-            </a>
+
+            <li
+              className={`${router.pathname.includes("/collection") &&
+                !router.pathname.includes("tracks")
+                ? activeLink
+                : inactiveLink
+                } flex items-center gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
+            >
+              <IoMdList className="text-2xl" />
+              <span className="font-bold">Your Library</span>
+            </li>
+
           </Link>
 
           <Link href="/collection/tracks">
-            <a>
-              <li
-                className={`${router.pathname === "/collection/tracks"
-                    ? "text-white"
-                    : "text-gray"
-                  } flex items-center mt-6 gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
-              >
-                <Image
-                  src="/images/liked_cover.jpeg"
-                  height={28}
-                  width={28}
-                  objectFit="contain"
-                  alt="Liked playlist cover"
-                />
-                <span className="font-bold">Liked songs</span>
-              </li>
-            </a>
+
+            <li
+              className={`${router.pathname === "/collection/tracks"
+                ? "text-white"
+                : "text-gray"
+                } flex items-center mt-6 gap-3 p-2 text-sm rounded cursor-pointer  hover:text-white`}
+            >
+              <Image
+                src="/images/liked_cover.jpeg"
+                height={28}
+                width={28}
+                objectFit="contain"
+                alt="Liked playlist cover"
+              />
+              <span className="font-bold">Liked songs</span>
+            </li>
+
           </Link>
-        </ul>
+        </ul >
 
         <div className="w-full h-px mt-4 bg-gray"></div>
 
@@ -108,18 +106,18 @@ export default function Sidebar() {
         >
           {playlists?.map((playlist) => (
             <Link key={playlist.id} href={`/playlist/${playlist.id}`}>
-              <a className="w-full">
-                <li
-                  key={playlist.id}
-                  className="text-sm font-semibold truncate cursor-default hover:text-white"
-                >
-                  {playlist.name}
-                </li>
-              </a>
+
+              <li
+                key={playlist.id}
+                className="text-sm font-semibold truncate cursor-default hover:text-white"
+              >
+                {playlist.name}
+              </li>
+
             </Link>
           ))}
         </ul>
-      </div>
-    </aside>
+      </div >
+    </aside >
   );
 }

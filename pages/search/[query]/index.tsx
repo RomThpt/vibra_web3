@@ -33,16 +33,15 @@ export default function Search({ query, searchResults }: IProps) {
         <>
           <div className="mt-5">
             <Link href={`/search/${query}/tracks`}>
-              <a>
-                <Heading text="Songs" />
-              </a>
+
+              <Heading text="Songs" />
+
             </Link>
 
             {searchResults.tracks.items?.slice(0, 5).map((track) => (
               <div
-                className={`grid grid-cols-12 col-span-12 p-1 ${
-                  !track.preview_url ? "opacity-50" : ""
-                }`}
+                className={`grid grid-cols-12 col-span-12 p-1 ${!track.preview_url ? "opacity-50" : ""
+                  }`}
                 key={track.id}
               >
                 <div className="flex items-center w-full col-span-11 my-3">
@@ -57,11 +56,10 @@ export default function Search({ query, searchResults }: IProps) {
 
                     <div className="w-full">
                       <div
-                        className={`w-10/12 text-sm font-medium truncate ${
-                          track.preview_url
+                        className={`w-10/12 text-sm font-medium truncate ${track.preview_url
                             ? "cursor-pointer hover:underline"
                             : "cursor-default"
-                        }`}
+                          }`}
                         onClick={() => playTrack(track)}
                       >
                         {track.name}
@@ -71,13 +69,13 @@ export default function Search({ query, searchResults }: IProps) {
                         <span className="truncate ">
                           {track.artists.map((artist, index) => (
                             <Link key={artist.id} href={`/artist/${artist.id}`}>
-                              <a>
-                                <span className="hover:text-white hover:underline">
-                                  {index !== 0
-                                    ? `, ${artist.name}`
-                                    : artist.name}
-                                </span>
-                              </a>
+
+                              <span className="hover:text-white hover:underline">
+                                {index !== 0
+                                  ? `, ${artist.name}`
+                                  : artist.name}
+                              </span>
+
                             </Link>
                           ))}
                         </span>
@@ -93,39 +91,42 @@ export default function Search({ query, searchResults }: IProps) {
             ))}
           </div>
 
-          {searchResults.artists.items.length > 0 && (
-            <div className="mt-5">
-              <Link href={`/search/${query}/artists`}>
-                <a>
+          {
+            searchResults.artists.items.length > 0 && (
+              <div className="mt-5">
+                <Link href={`/search/${query}/artists`}>
+
                   <Heading text="Artists" />
-                </a>
-              </Link>
-              <ArtistList artists={searchResults.artists.items.slice(0, 6)} />
-            </div>
-          )}
+
+                </Link>
+                <ArtistList artists={searchResults.artists.items.slice(0, 6)} />
+              </div >
+            )
+          }
 
           <div className="mt-5">
             <Link href={`/search/${query}/albums`}>
-              <a>
-                <Heading text="Albums" />
-              </a>
+
+              <Heading text="Albums" />
+
             </Link>
             <AlbumList albums={searchResults.albums.items.slice(0, 6)} />
-          </div>
+          </div >
 
           <div className="mt-5">
             <Link href={`/search/${query}/playlists`}>
-              <a>
-                <Heading text="Playlists" />
-              </a>
+
+              <Heading text="Playlists" />
+
             </Link>
             <PlaylistList
               playlists={searchResults.playlists.items.slice(0, 6)}
             />
-          </div>
+          </div >
         </>
-      )}
-    </Layout>
+      )
+      }
+    </Layout >
   );
 }
 

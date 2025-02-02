@@ -10,7 +10,6 @@ export default function CollectionTabs() {
     <div className="flex items-center gap-8 bg-transparent">
       {collectionTabs.map((tab) => (
         <Link href={`/collection/${tab}`} key={tab}>
-          <a>
             <span
               className={`${
                 router.pathname === `/collection/${tab}`
@@ -20,7 +19,6 @@ export default function CollectionTabs() {
             >
               {tab}
             </span>
-          </a>
         </Link>
       ))}
     </div>

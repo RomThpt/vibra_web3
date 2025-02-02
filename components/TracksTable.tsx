@@ -32,9 +32,8 @@ export default function TracksTable({
           </div>
 
           <div
-            className={`${
-              noAlbum ? "col-span-10" : "col-span-6"
-            } text-sm font-medium tracking-wider text-left uppercase text-gray`}
+            className={`${noAlbum ? "col-span-10" : "col-span-6"
+              } text-sm font-medium tracking-wider text-left uppercase text-gray`}
           >
             Title
           </div>
@@ -56,9 +55,8 @@ export default function TracksTable({
       <div className="w-full col-span-12">
         {tracks?.map((track, index) => (
           <div
-            className={`grid grid-cols-12 ${
-              !track.preview_url ? "opacity-50" : ""
-            }`}
+            className={`grid grid-cols-12 ${!track.preview_url ? "opacity-50" : ""
+              }`}
             key={track.id + index + 1}
           >
             <div className="flex items-center col-span-1 my-3 text-sm text-gray">
@@ -66,9 +64,8 @@ export default function TracksTable({
             </div>
 
             <div
-              className={`${
-                noAlbum ? "col-span-10" : "col-span-6"
-              } flex items-center w-full  my-3`}
+              className={`${noAlbum ? "col-span-10" : "col-span-6"
+                } flex items-center w-full  my-3`}
             >
               <div className="flex items-center w-full gap-4">
                 {(!noAlbum || noArtist) && (
@@ -83,11 +80,10 @@ export default function TracksTable({
 
                 <div className="w-full">
                   <h2
-                    className={`w-10/12 text-sm font-medium truncate ${
-                      track.preview_url
-                        ? "cursor-pointer hover:underline"
-                        : "cursor-default"
-                    }`}
+                    className={`w-10/12 text-sm font-medium truncate ${track.preview_url
+                      ? "cursor-pointer hover:underline"
+                      : "cursor-default"
+                      }`}
                     onClick={() => playTrack(track)}
                   >
                     {track.name}
@@ -101,11 +97,11 @@ export default function TracksTable({
                             key={artist.id + track.id}
                             href={`/artist/${artist.id}`}
                           >
-                            <a>
-                              <span className="hover:text-white hover:underline">
-                                {index !== 0 ? `, ${artist.name}` : artist.name}
-                              </span>
-                            </a>
+
+                            <span className="hover:text-white hover:underline">
+                              {index !== 0 ? `, ${artist.name}` : artist.name}
+                            </span>
+
                           </Link>
                         ))}
                       </span>
@@ -120,7 +116,7 @@ export default function TracksTable({
                 <Link href={`/album/${track.album.id}`}>
                   <a className="truncate hover:text-white hover:underline">
                     {track.album.name}
-                  </a>
+
                 </Link>
               </div>
             )}
@@ -131,6 +127,6 @@ export default function TracksTable({
           </div>
         ))}
       </div>
-    </div>
+    </div >
   );
 }

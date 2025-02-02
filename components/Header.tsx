@@ -48,10 +48,9 @@ export default function Header() {
           router.pathname !== "/collection/tracks" && <CollectionTabs />}
       </div>
       <div>
-        <Link href="/premium">
-          <a className="flex items-center justify-center rounded-full h-10 px-4 hover:bg-primary focus:outline-none font-bold">
-            Subscribe Premium
-          </a>
+        <Link href="/premium" className="flex items-center justify-center rounded-full h-10 px-4 hover:bg-primary focus:outline-none font-bold">
+          Subscribe Premium
+
         </Link>
       </div>
       <div className="flex items-center gap-6">
